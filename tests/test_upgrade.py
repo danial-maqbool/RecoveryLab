@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import shutil
 import sqlite3
+from contextlib import closing
 import subprocess
 from unittest.mock import patch
 from app.formats import inspect, repair
@@ -86,7 +87,7 @@ class NativeRecoveryTests(AppCase):
 
     def test_sqlite_copy_preserves_rows_and_schema(self):
         p = self.workspace / "input.sqlite3"
-        with sqlite3.connect(p) as db:
+        with closing(sqlite3.connect(p)) as db, db:
             db.execute("CREATE TABLE entries(id INTEGER PRIMARY KEY, value BLOB)")
             db.execute("CREATE INDEX ix ON entries(value)")
             db.execute("INSERT INTO entries VALUES(?,?)", (8, b"\x00binary"))
@@ -94,7 +95,7 @@ class NativeRecoveryTests(AppCase):
         data, extension, notes = repair(p.read_bytes(), p.name)
         q = self.workspace / ("copy" + extension)
         q.write_bytes(data)
-        with sqlite3.connect(q) as db:
+        with closing(sqlite3.connect(q)) as db, db:
             self.assertEqual(
                 db.execute("SELECT id,value FROM entries").fetchone(),
                 (8, b"\x00binary"),

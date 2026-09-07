@@ -1,0 +1,22 @@
+{
+  "name": "RecoveryLab",
+  "repository": "RecoveryLab",
+  "slug": "recoverylab",
+  "tagline": "Inspect damaged files. Recover what the file still contains.",
+  "port": 8763,
+  "color": "#be6425",
+  "version": "0.2.0",
+  "description": "Inspect a damaged file, read the evidence, and create a recovered copy when a supported method applies.",
+  "topics": [
+    "python",
+    "local-first",
+    "offline",
+    "sqlite",
+    "self-hosted",
+    "file-recovery",
+    "zip",
+    "file-inspection",
+    "data-repair",
+    "forensics"
+  ]
+}

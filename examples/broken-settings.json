@@ -1,0 +1,5 @@
+{
+  "project": "Workshop inventory",
+  "items": ["Labels", "Storage boxes", "Printer paper",],
+  "note": "The characters ,} inside this string must not change",
+}

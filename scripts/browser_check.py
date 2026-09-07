@@ -30,9 +30,10 @@ def main():
     parser.add_argument("--bridge", action="store_true")
     parser.add_argument("--record", action="store_true")
     args = parser.parse_args()
-    from playwright.sync_api import sync_playwright
+    from playwright.sync_api import sync_playwright, expect
 
     config = json.loads((ROOT / "project.json").read_text())
+    (ROOT / "docs/browser-report.json").unlink(missing_ok=True)
     (ROOT / "docs/assets").mkdir(parents=True, exist_ok=True)
     frames = []
     checks = []
@@ -261,10 +262,15 @@ def main():
                 frame("Read the recovery evidence", "#recovery-output")
                 page.locator("#recover-batch").click()
                 settle()
-                checked(
-                    "Batch recovery marks all five copies",
-                    "5" in page.locator(".stat-value").last.inner_text(),
+                # Each file has its own job. A hidden job bar can be an
+                # intermediate state, so wait for the final rendered batch result.
+                expect(page.locator(".stat-value").last).to_have_text(
+                    "5", timeout=30000
                 )
+                expect(
+                    page.locator("[data-inspection]").filter(has_text="Copy created")
+                ).to_have_count(5, timeout=30000)
+                checked("Batch recovery marks all five copies")
                 page.locator("[data-inspection]").filter(
                     has_text="missing-directory"
                 ).click()

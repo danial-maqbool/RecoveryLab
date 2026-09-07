@@ -8,8 +8,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     for name in [
-        "README.md", "project.json", "app/service.py", "app/advanced.py",
-        "localdesk/vault.py", "run.py", "web/app.js",
+        "README.md",
+        "project.json",
+        "app/service.py",
+        "app/advanced.py",
+        "localdesk/vault.py",
+        "run.py",
+        "web/app.js",
     ]:
         if not (ROOT / name).is_file():
             raise ValueError("Required source is absent: " + name)
@@ -33,11 +38,11 @@ def main():
         "from playwright.sync_api import sync_playwright\n",
         "from playwright.sync_api import sync_playwright, expect\n",
     )
-    old = '''                checked(
+    old = """                checked(
                     "Batch recovery marks all five copies",
                     "5" in page.locator(".stat-value").last.inner_text(),
-                )'''
-    new = '''                # Each file has its own job. A hidden job bar can be an
+                )"""
+    new = """                # Each file has its own job. A hidden job bar can be an
                 # intermediate state, so wait for the final rendered batch result.
                 expect(page.locator(".stat-value").last).to_have_text(
                     "5", timeout=30000
@@ -45,7 +50,7 @@ def main():
                 expect(
                     page.locator("[data-inspection]").filter(has_text="Copy created")
                 ).to_have_count(5, timeout=30000)
-                checked("Batch recovery marks all five copies")'''
+                checked("Batch recovery marks all five copies")"""
     if old in text:
         if text.count(old) != 1:
             raise ValueError("Review the changed batch browser check.")
@@ -58,7 +63,8 @@ def main():
             raise ValueError("The browser-check setup has changed.")
         text = text.replace(
             marker,
-            marker + '    (ROOT / "docs/browser-report.json").unlink(missing_ok=True)\n',
+            marker
+            + '    (ROOT / "docs/browser-report.json").unlink(missing_ok=True)\n',
             1,
         )
     path.write_text(text, encoding="utf-8")

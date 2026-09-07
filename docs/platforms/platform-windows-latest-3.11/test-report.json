@@ -33,7 +33,7 @@
       "reason": "Creating symbolic links may need a Windows developer setting."
     }
   ],
-  "seconds": 18.078,
+  "seconds": 16.89,
   "packages": {
     "cryptography": "50.0.0",
     "keyring": "25.7.0",
@@ -87,6 +87,6 @@
     "tests/test_upgrade.py": "4a49f5a2050caf0d737f684d6d3f27d2ff334b90ea4c64e86a3e9215fc336767",
     "tests/test_vault.py": "447498c2397f30172198c293006420b252e97de1447afb19c058d359140a3e20"
   },
-  "github_run_id": "34109393288",
-  "github_commit": "4bd0aa744271fd61cae0e40aaf5f3dc6ddb6f9d6"
+  "github_run_id": "34111236129",
+  "github_commit": "c9f48c4fac30e7b5006268c637bc8d910bc1b201"
 }

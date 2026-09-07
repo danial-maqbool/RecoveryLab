@@ -1,0 +1,22 @@
+[
+  {
+    "frame": 1,
+    "caption": "Start with a local workspace",
+    "duration_ms": 1800
+  },
+  {
+    "frame": 2,
+    "caption": "Inspect damaged and valid sample files",
+    "duration_ms": 1800
+  },
+  {
+    "frame": 3,
+    "caption": "Read the recovery evidence",
+    "duration_ms": 1800
+  },
+  {
+    "frame": 4,
+    "caption": "Recover surviving entries from a damaged ZIP",
+    "duration_ms": 1800
+  }
+]

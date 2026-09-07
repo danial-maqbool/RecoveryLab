@@ -1,0 +1,25 @@
+{
+  "project": "RecoveryLab",
+  "browser": "143.0.7499.4",
+  "mode": "direct loopback navigation",
+  "checks": [
+    "Main view renders",
+    "Five sample files are inspected",
+    "A recovered copy has download artifacts",
+    "Batch recovery marks all five copies",
+    "Read-only hex view opens",
+    "Navigation: Recovery workbench",
+    "Navigation: Job history",
+    "Navigation: Format coverage",
+    "Dark theme control works",
+    "Mobile viewport has no page-wide overflow",
+    "No uncaught browser errors",
+    "No external browser network request",
+    "Closing the browser leaves the worker running",
+    "Worker health remains available after browser close"
+  ],
+  "passed": 14,
+  "errors": [],
+  "seconds": 11.089,
+  "media": "Actual recorded application states, not mockups. GIF timing is illustrative."
+}

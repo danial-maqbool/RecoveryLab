@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "handoff_revision": 1,
-  "prepared_on": "2026-09-07",
+  "handoff_revision": 2,
+  "prepared_on": "2026-09-08",
   "repository": "danial-maqbool/RecoveryLab",
   "application_version": "0.2.0",
   "historical_release_commit": "c9d9391fbfa6d3121c2c4e95cee2b2678d46db0c",
-  "local_acceptance_status": "not_run",
+  "local_acceptance_status": "BLOCKED",
   "default_port": 8763,
   "read_first": [
     "AGENTS.md",
@@ -24,5 +24,9 @@
     "RL-07",
     "RL-08"
   ],
-  "note": "Historical test counts are not a new local acceptance result."
+  "note": "Current local acceptance is blocked by Windows symlink capability.",
+  "local_acceptance_report": "docs/LOCAL_ACCEPTANCE_REPORT.md",
+  "local_tested_commit": "f023eb7b63cc4508980143cd062f2f2bd1d53949",
+  "local_followup_run": "20260908-final-acceptance-01",
+  "branch_policy": "main only; no force-push; preserve tags"
 }
